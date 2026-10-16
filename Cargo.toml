@@ -1,0 +1,32 @@
+[package]
+name = "si-gatekeeper"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Constitutional & Topological Gatekeeper for Super Intelligence (AQC/DGCS) — Open-sourced by the people for the people of the world."
+repository = "https://github.com/MoTechnicalities/SI-Gatekeeper"
+keywords = ["aqc", "dgcs", "deterministic", "constitutional-ai", "governance"]
+categories = ["science", "algorithms", "mathematics"]
+
+[dependencies]
+artificial-qubit-cognition = { git = "https://github.com/MoTechnicalities/Artificial-Qubit-Cognition.git" }
+
+[[bin]]
+name = "si_gatekeeper"
+path = "src/main.rs"
+
+[[bin]]
+name = "compliance_tournament"
+path = "src/bin/compliance_tournament.rs"
+
+[[bin]]
+name = "infrastructure_arbitration"
+path = "src/bin/infrastructure_arbitration.rs"
+
+[[bin]]
+name = "legal_reasoning_trace"
+path = "src/bin/legal_reasoning_trace.rs"
+
+[[bin]]
+name = "self_improvement_gate"
+path = "src/bin/self_improvement_gate.rs"

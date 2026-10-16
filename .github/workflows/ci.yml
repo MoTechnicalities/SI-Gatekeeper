@@ -1,0 +1,41 @@
+name: SI-Gatekeeper Constitutional Verification CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  verify:
+    name: Rust & Python Deterministic Gatekeeper Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout SI-Gatekeeper
+        uses: actions/checkout@v4
+
+      - name: Install Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Run Cargo Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Run Unit & Constitutional Gate Tests
+        run: cargo test --verbose
+
+      - name: Verify Full 5-Phase SI-Gatekeeper Suite
+        run: |
+          cargo run --bin si_gatekeeper
+          cargo run --bin compliance_tournament
+          cargo run --bin infrastructure_arbitration
+          cargo run --bin legal_reasoning_trace
+          cargo run --bin self_improvement_gate
+
+      - name: Verify Python Prototype Signature Equivalence
+        run: python3 examples/prototype_compliance.py
