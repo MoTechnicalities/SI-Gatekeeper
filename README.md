@@ -66,7 +66,7 @@ $$
 $$
 
 $$
-\operatorname{AdmissibleImprovement}(SI_{n+1}, SI_n) =
+\text{AdmissibleImprovement}(SI_{n+1}, SI_n) =
 I(SI_{n+1}) \land V(SI_{n+1}) \land N(SI_{n+1}, SI_n) \land R(SI_{n+1}) \land \left(U(SI_{n+1}) > U(SI_n)\right)
 $$
 
