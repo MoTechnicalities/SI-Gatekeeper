@@ -2,9 +2,8 @@ use artificial_qubit_cognition::arithmetic::{checked_abs, checked_sub, Arithmeti
 
 /// Observable structural features of a governance or operational primitive.
 ///
-/// This resolves the "arbitrary coordinate" objection (Fault 2): coordinates in
-/// $\mathbb{Z}^3$ (`[drift, symmetry, stability]`) are derived deterministically
-/// from observable counts rather than asserted by hand:
+/// Rather than assigning coordinates in $\mathbb{Z}^3$ (`[drift, symmetry, stability]`)
+/// by hand, `ObservableFeatures` derives them deterministically from declared structural counts:
 ///
 /// - `drift = intermediaries` (number of intermediary structures between operator and action)
 /// - `symmetry = min(rights, duties) - |rights - duties|`

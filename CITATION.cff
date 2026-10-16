@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "SI-Gatekeeper: Constitutional & Geometric Trust Harness for Super Intelligence"
+message: "If you use SI-Gatekeeper in your research or engineering systems, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Rofick
+    given-names: Mogir Jason
+    alias: MoTechnicalities
+repository-code: "https://github.com/MoTechnicalities/SI-Gatekeeper"
+url: "https://github.com/MoTechnicalities/SI-Gatekeeper"
+license: "MIT OR Apache-2.0"
+version: 0.1.0
+date-released: "2026-10-16"
+keywords:
+  - deterministic-cognition
+  - artificial-qubit-cognition
+  - dgcs
+  - constitutional-ai
+  - formal-verification
+  - rust

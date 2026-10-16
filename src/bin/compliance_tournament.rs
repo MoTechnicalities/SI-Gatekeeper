@@ -11,7 +11,7 @@ fn main() {
     println!("  Open-sourced by the people for the people of the world.");
     println!("================================================================================\n");
 
-    println!("1. Operational Coordinate Derivation (Solving Fault 2 — Derived, Not Asserted):");
+    println!("1. Operational Coordinate Derivation (Derived from Structural Counts):");
     println!("   drift = intermediaries | symmetry = min(R,D) - |R-D| | stability = protection - exposure");
     for primitive in [
         entity_intermediation().unwrap(),

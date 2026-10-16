@@ -32,7 +32,7 @@ fn main() {
     println!("  Selected Deployment Plan    : Plan {}", infra.winning_composite_id);
     println!();
 
-    println!("[Phase III] Zero-Drift CorrectionBuffer Failover Verification");
+    println!("[Phase III] Deterministic CorrectionBuffer Failover Verification");
     println!(
         "  Blocked Unverified Candidate '{}' at stage [{}]",
         infra.fallback_recovery_demo.anomalous_candidate_id,

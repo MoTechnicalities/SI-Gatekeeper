@@ -8,7 +8,7 @@
 >
 > *Scale can establish market dominance, but a defensible technical standard must establish why systems should be trusted.*
 
-**SI-Gatekeeper** is an independent, zero-drift Constitutional and Topological Gatekeeper for Super Intelligence (SI) ecosystems. It imports proven deterministic geometric primitives from [`Artificial-Qubit-Cognition`](https://github.com/MoTechnicalities/Artificial-Qubit-Cognition) (AQC / DGCS) and elevates constitutional governance into a standalone verification and arbitration engine.
+**SI-Gatekeeper** is an independent, integer-exact Constitutional and Topological Gatekeeper for Super Intelligence (SI) ecosystems. It imports deterministic geometric primitives from [`Artificial-Qubit-Cognition`](https://github.com/MoTechnicalities/Artificial-Qubit-Cognition) (AQC / DGCS) and implements constitutional governance as a standalone verification and arbitration engine.
 
 ### What Is an Artificial Qubit (AQ) and How Does It Relate to Cognition?
 
@@ -34,24 +34,24 @@ If the standard is defined merely by whichever actor amasses the largest compute
 
 ---
 
-## What `SI-Gatekeeper` Makes Possible: The Winning Harness for Super Intelligence
+## What `SI-Gatekeeper` Demonstrates: A Constitutional Harness for Super Intelligence
 
 Raw generative power without a deterministic governor is like a fusion reactor without magnetic containment: the more energy you pump into it, the more dangerous its uncontained drift becomes.
 
-`SI-Gatekeeper` is the **containment and arbitration harness** that turns raw computational scale into lawful, civilizational-grade intelligence. By decoupling **Candidate Generation** (where stochastic models, human engineers, or automated search engines propose bold ideas) from **Constitutional Governance** (where deterministic geometry verifies, scores, and certifies admission), it unlocks solutions that neither probabilistic AI nor rigid legacy software can achieve alone:
+`SI-Gatekeeper` is a **containment and arbitration harness** designed to pair computational scale with explicit, auditable governance. By decoupling **Candidate Generation** (where stochastic models, human engineers, or automated search engines propose candidate plans) from **Constitutional Governance** (where deterministic integer geometry verifies, scores, and certifies admission), this repository demonstrates five reproducible capabilities:
 
-- **Safe Recursive Self-Improvement ($SI_n \rightarrow SI_{n+1}$):**
-  For the first time, an intelligent system can invent new operator trajectories and evolve its own capabilities without risking value drift or silent corruption. Every proposed upgrade must pass the strict short-circuiting gate ($\text{Invariant} \rightarrow \text{Validity} \rightarrow \text{Novelty} \rightarrow \text{Utility} \rightarrow \text{Improvement}$) under a locked constitution before it can replace the baseline.
-- **Zero-Drift Critical Infrastructure & Scientific Control Planes:**
-  Power grids, AI data centers, aerospace structures, and national laboratory experiments cannot tolerate "99% likely to be safe" token predictions. `SI-Gatekeeper` binds physical engineering topologies and power-routing constraints into exact integer geometry ($\mathbb{Z}^3$), guaranteeing that any trajectory violating a physical or safety invariant is intercepted before execution—and instantaneously rolled back to a pre-validated state via the `CorrectionBuffer`.
-- **Cross-Border, Multi-Jurisdictional Interoperability Without Surrendering Sovereignty:**
-  Different nations, states, industries, and communities hold distinct legal and operational requirements. With `SI-Gatekeeper`, each sovereign or regulatory body declares its own explicit `Constitution` artifact. Global ecosystems can arbitrate shared infrastructure and commerce across jurisdictions simultaneously—admitting plans that satisfy the intersection of all mandatory constitutions and emitting compact, byte-stable audit receipts (`gatekeeper:v1|...`) that anyone on Earth can replay and verify without exposing proprietary internals.
-- **An End to the "Vibe-Coded" Liability Crisis:**
-  As AI-generated code and autonomous agents flood global software supply chains, `SI-Gatekeeper` provides the missing verification standard: a universal, zero-dependency Rust harness where every architectural change, compliance claim, and autonomous action carries a mathematical proof of invariant preservation and a complete audit trail.
-- **Auditable Institutional & Legal Reasoning that Respects Human Sovereignty:**
-  Instead of black-box AI declaring what the law or policy "is," `SI-Gatekeeper` separates verified textual observations from normative conclusions, blocks both hallucinated leaps and lazy heuristic dismissals, and explicitly yields to human courts and legislatures (`RequiresAuthoritativeInterpretation`) when a question reaches the boundary of institutional authority.
+- **Gated Recursive Self-Improvement ($SI_n \rightarrow SI_{n+1}$):**
+  Demonstrates how an intelligent system can evaluate candidate operator trajectories under a locked constitution before any upgrade replaces the baseline (`cargo run --bin self_improvement_gate`). Every proposed upgrade must pass the short-circuiting gate ($\text{Invariant} \rightarrow \text{Validity} \rightarrow \text{Novelty} \rightarrow \text{Utility} \rightarrow \text{Improvement}$), ensuring a high-utility shortcut cannot bypass invariant or validity checks.
+- **Integer-Exact Critical Infrastructure & Control-Plane Arbitration:**
+  Power grids, AI data centers, aerospace structures, and laboratory control planes require deterministic safety boundaries alongside probabilistic planners. `SI-Gatekeeper` binds structural topologies and power-routing constraints into exact integer geometry ($\mathbb{Z}^3$), demonstrating how trajectories that violate a declared invariant are intercepted before execution and rolled back to a pre-validated state via the `CorrectionBuffer` (`cargo run --bin infrastructure_arbitration`).
+- **Multi-Jurisdictional Arbitration Across Declared Constitutions:**
+  Different jurisdictions, industries, and communities hold distinct legal and operational requirements. With `SI-Gatekeeper`, each body declares an explicit `Constitution` artifact. The multi-jurisdictional evaluator admits only candidates that satisfy the intersection of all mandatory constitutions and emits compact, byte-stable audit receipts (`gatekeeper:v1|...`) for independent replay.
+- **Auditable Verification for AI-Generated Proposals:**
+  As AI-generated code and autonomous agents enter software supply chains, `SI-Gatekeeper` provides a zero-float Rust verification harness where candidate architectures, compliance claims, and state transitions produce deterministic invariant checks and replayable audit trails (`cargo run --bin compliance_tournament`).
+- **Structured Institutional & Legal Rule Tracing:**
+  Instead of collapsing factual premises and normative conclusions into a single probabilistic prompt, `SI-Gatekeeper` separates verified textual observations from legal conclusions, filters out both unsupported leaps and unexamined dismissals, and explicitly yields to human courts and legislatures (`RequiresAuthoritativeInterpretation`) when an inquiry reaches the boundary of institutional authority (`cargo run --bin legal_reasoning_trace`).
 
-In short: **whoever harnesses Super Intelligence with verifiable trust will define the global standard.** `SI-Gatekeeper` gives that harness to the world.
+In short: **systems earn trust when their constraints, inputs, and decision traces can be independently replayed and audited.**
 
 ---
 
@@ -79,9 +79,9 @@ Just as an unconstitutional statute is void regardless of its claimed utility, *
 2. **Model Constitutional Validity (`Constitution`):** Whether the candidate satisfies the declared DGCS policy constitution after external facts are supplied.
 3. **Separation of Generator and Governor:** Candidate generators may propose states or operator sequences, but are architecturally barred from certifying admission, altering the constitution, or mutating resonance weights during evaluation.
 
-### 3. Operational Coordinate Derivation (Solving Fault 2)
+### 3. Operational Coordinate Derivation from Structural Counts
 
-To eliminate the charge that geometric coordinates in $\mathbb{Z}^3$ (`[drift, symmetry, stability]`) are arbitrary, `src/derivation.rs` implements a deterministic derivation procedure from observable structural features:
+Rather than assigning geometric coordinates in $\mathbb{Z}^3$ (`[drift, symmetry, stability]`) by hand, `src/derivation.rs` derives them deterministically from declared structural counts:
 
 | Axis | Coordinate | Operational Formula | Meaning |
 | :--- | :---: | :--- | :--- |
@@ -108,9 +108,12 @@ This procedure deterministically derives all canonical compliance primitives (`p
 
 ---
 
-## Walkthrough: The 6-Layer Legal-Reasoning Trace (Why Probabilistic AI Cannot Replicate This)
+## Walkthrough: The 6-Layer Legal-Reasoning Trace
 
-When a conventional probabilistic LLM is asked a complex constitutional or statutory question, it collapses grammar, statutory definitions, historical enactments, case law, and training-set heuristics into a single next-token probability distribution. As a result, stochastic models routinely fail in one of two opposite ways:
+> **Disclaimer (Not Legal Advice / Illustrative Demonstration Only):**
+> The statutory cases in `src/legal_reasoning.rs` and `src/bin/legal_reasoning_trace.rs` are **software engineering demonstrations** of structured, multi-layer citation and rule tracing. Nothing in this repository constitutes legal or tax advice, and none of the model dispositions (`Supported`, `Contradicted`, `Unresolved`, or `RequiresAuthoritativeInterpretation`) represent legal rulings. In particular, references to `26 U.S.C. § 7701` and the term `"individual"` are included solely with hand-authored candidate interpretations to demonstrate how the 6-layer pipeline separates a literal textual observation from an unsupported legal leap (which the gatekeeper explicitly rejects as `INADMISSIBLE`).
+
+When a conventional probabilistic LLM is asked a complex constitutional or statutory question, it blends grammar, statutory definitions, historical enactments, case law, and training-set heuristics into a single next-token probability distribution. As a result, unconstrained models can fail in one of two opposite ways:
 1. **Conflation / Hallucination:** Jumping directly from an isolated grammatical or textual observation to an unsupported legal conclusion.
 2. **Dismissal by Heuristic:** Reflexively dismissing a structured question using summary training priors without inspecting the actual statutory text or historical lineage.
 
@@ -193,19 +196,19 @@ Because `SI-Gatekeeper` is domain-independent at the substrate level while enfor
 - **Healthcare, Clinical Trials & Biomedical Device Governance:**
   Deterministic dosing boundaries, radiation-therapy trajectory gating, and FDA/regulatory protocol compliance. Separates verified patient lab attestations (`ExternalFactAttestation`) from treatment protocol rules (`Constitution`), producing replay-auditable clinical decision receipts.
 - **Financial Clearing, Critical Supply Chains & Sovereign Trade:**
-  Zero-drift settlement verification, customs/tariff classification across bilateral treaties, and critical-mineral or semiconductor supply-chain provenance—where every transaction or routing decision is certified against multi-jurisdictional compliance rules without exposing private commercial data.
+  Deterministic settlement verification, customs/tariff classification across bilateral treaties, and critical-mineral or semiconductor supply-chain provenance—where every transaction or routing decision is checked against multi-jurisdictional compliance rules without exposing private commercial data.
 
 ---
 
 ## Rapid Ecosystem Adoption: Prototype in Python, Certify in Rust
 
-A global standard only wins if builders everywhere can adopt it effortlessly. `SI-Gatekeeper` is designed around a massive developer-velocity advantage: **the mathematics of AQC/DGCS are pure integer lattice operations ($\mathbb{Z}^3$) and explicit gate predicates.**
+A technical standard is easier to adopt when builders can prototype quickly. `SI-Gatekeeper` benefits from a straightforward developer workflow: **the mathematics of AQC/DGCS are pure integer lattice operations ($\mathbb{Z}^3$) and explicit gate predicates.**
 
-Because there are no opaque tensor graphs or proprietary hardware dependencies, domain experts—scientists, legal scholars, grid engineers, and students—can **prototype new domain ontologies and constitutions in plain Python in minutes**, and then use modern **LLM coding tools to refactor those exact integer specifications directly into zero-dependency, memory-safe Rust** for production deployment.
+Because there are no opaque tensor graphs or proprietary hardware dependencies, domain experts—scientists, legal scholars, grid engineers, and students—can **prototype new domain ontologies and constitutions in plain Python in minutes**, and then use modern **LLM coding tools to refactor those exact integer specifications directly into memory-safe Rust** for production deployment.
 
-Here is why this **Python $\rightarrow$ LLM Refactor $\rightarrow$ Rust Gatekeeper** pipeline is a force multiplier:
-1. **Human-Friendly Prototyping in Python:** Anyone can model observable features, derive `[drift, symmetry, stability]` coordinates, and test constitutional gate rules in a 40-line Python script or Jupyter notebook.
-2. **Error-Free Python-to-Rust Refactoring via LLMs:** While LLMs struggle when asked to "vibe-code" unconstrained systems from scratch, they excel at translating a bounded, integer-exact Python AQC/DGCS prototype into strict, checked-arithmetic Rust modules that plug straight into `SI-Gatekeeper`.
+Here is why this **Python $\rightarrow$ LLM Refactor $\rightarrow$ Rust Gatekeeper** pipeline works well in practice:
+1. **Human-Friendly Prototyping in Python:** Anyone can model observable features, derive `[drift, symmetry, stability]` coordinates, and test constitutional gate rules in a 55-line Python script or Jupyter notebook.
+2. **Reliable Python-to-Rust Refactoring via LLMs:** While LLMs can introduce subtle bugs when asked to "vibe-code" unconstrained systems from scratch, they are effective at translating a bounded, integer-exact Python AQC/DGCS prototype into checked-arithmetic Rust modules that plug straight into `SI-Gatekeeper`.
 3. **Identical Canonical Signatures Across Languages:** Because DGCS uses pure integer arithmetic, the Python prototype and the compiled Rust binary emit the **exact same bit-for-bit tournament signature**.
 
 ### Minimal Python Prototype Example (Ready for LLM-to-Rust Refactoring)
@@ -284,15 +287,36 @@ compliance:metaAQ|winner:C|A:invalid|B:invalid|C:64|D:48
 
 ---
 
+## Limitations, Threat Model & Scope Boundaries
+
+A defensible engineering standard must be explicit about both what it guarantees and what lies outside its boundary:
+
+1. **Deterministic Replayability Does Not Equal Oracle Truth:**
+   - Integer arithmetic in $\mathbb{Z}^3$ guarantees that **given** a declared `Constitution`, an `ExternalFactAttestation`, and a set of `ObservableFeatures`, every verifier on any machine will compute the exact same coordinates, gate verdicts, fallback selections, and canonical signatures (`gatekeeper:v1|...`) with zero floating-point drift.
+   - It does **not** independently verify whether external empirical or legal premises are true in the physical world. As documented in `src/constitution.rs`, canonical signatures prove **deterministic replay**, not truth by assertion.
+2. **Who Supplies the Inputs (Preventing Generator Gaming):**
+   - A candidate's derived coordinates (`drift = intermediaries`, `symmetry = min(R,D) - |R-D|`, `stability = protection - exposure`) and its `ExternalFactAttestation` determine whether it passes the gate and how it scores.
+   - If the candidate generator (such as an untrusted LLM agent) were allowed to self-report its own `rights`, `duties`, `protection`, `exposure`, or `ExternalFactAttestation`, a bad-faith or reward-hacking generator could game the score by inflating `protection` or falsely setting `verified = true`.
+   - **Architectural Requirement:** In real deployments, the **Candidate Generator** and the **Feature/Fact Attestor** must be strictly separated:
+     - `ObservableFeatures` should be extracted by deterministic static analysis, formal telemetry counters, or independent domain auditors—never self-asserted by the proposing model.
+     - `ExternalFactAttestation` records and `Constitution` manifests should be supplied and cryptographically signed by authorized institutional or sensor authorities outside the generator's control.
+3. **Hand-Authored Demonstration Inputs in This Repository:**
+   - The four standalone binaries (`compliance_tournament`, `infrastructure_arbitration`, `legal_reasoning_trace`, and `self_improvement_gate`) use small, hand-authored candidate sets and feature counts to make the gate mechanics inspectable and self-contained. Extending `SI-Gatekeeper` to production domains requires binding `ObservableFeatures` to real telemetry, AST analyzers, or verified legal/regulatory databases.
+
+---
+
 ## Repository Structure
 
 ```text
 SI-Gatekeeper/
 ├── .github/workflows/ci.yml             # Automated Rust & Python deterministic verification CI
+├── CITATION.cff                         # Academic & technical citation metadata
+├── CONTRIBUTING.md                      # Contributor guidelines & determinism rules
 ├── Cargo.toml
-├── LICENSE-APACHE
-├── LICENSE-MIT
+├── LICENSE-APACHE                       # Apache-2.0 License
+├── LICENSE-MIT                          # MIT License
 ├── README.md
+├── SECURITY.md                          # Security policy & threat-model boundaries
 ├── assets/images/
 │   ├── SI_Gatekeeper_hero.png           # High-resolution architectural hero banner (1408x768)
 │   └── SI_Gatekeeper_hero.svg           # Vector source for the architectural hero banner

@@ -9,7 +9,8 @@ fn main() {
     println!("================================================================================\n");
 
     println!("Layers: Authority -> Enactment -> Definitions -> Interpretation -> Admissibility -> DecisionTrace");
-    println!("Boundary: Separates Textual Observation from Legal Conclusion; never usurps judicial/legislative authority.\n");
+    println!("Boundary: Separates Textual Observation from Legal Conclusion; never usurps judicial/legislative authority.");
+    println!("Disclaimer: Illustrative software engineering demonstration only — not legal or tax advice.\n");
 
     let cases = canonical_statutory_classification_cases()
         .expect("canonical statutory classification cases must construct cleanly");

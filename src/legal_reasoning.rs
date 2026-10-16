@@ -6,8 +6,16 @@ use artificial_qubit_cognition::{
 
 use crate::derivation::{DerivedPrimitiveAQ, ObservableFeatures};
 
-/// The 6-Layer Constitutional & Statutory Analysis Hierarchy in DGCS:
+/// 6-Layer Constitutional & Statutory Analysis Hierarchy in DGCS.
 ///
+/// **Important Disclaimer:** This module is a software engineering demonstration of
+/// structured, multi-layer rule and citation tracing. Nothing in this module constitutes
+/// legal or tax advice, nor does any disposition (`Supported`, `Contradicted`, `Unresolved`,
+/// `RequiresAuthoritativeInterpretation`) represent a binding legal ruling. The statutory
+/// cases constructed below use illustrative, hand-authored candidate interpretations to
+/// demonstrate how the gatekeeper rejects both unsupported leaps and unexamined dismissals.
+///
+/// Layers:
 /// 1. **Authority**      — What power does the Constitution grant the actor/legislature, and under what constraints?
 /// 2. **Enactment**      — What did the legislature actually enact for each classification?
 /// 3. **Definitions** — How do statutory terms (*individual*, *citizen*, *resident*, *resident alien*) function,
