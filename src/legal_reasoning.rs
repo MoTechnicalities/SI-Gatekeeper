@@ -387,12 +387,45 @@ pub fn evaluate_legal_argument(
             continue;
         }
 
-        // Compute deterministic DGCS resonance score from derived coordinates [drift, symmetry, stability]
+        // Verify that cited evidence includes at least one controlling anchor at or above Statutory rank
+        // (Regulatory or AdministrativeGuidance alone—such as a standalone regulation without statutory anchor—cannot self-authenticate)
+        let has_statutory_or_higher_evidence = interp.supporting_evidence_ids.iter().any(|ev_id| {
+            argument
+                .evidence
+                .iter()
+                .any(|ev| &ev.id == ev_id && ev.verified && ev.rank >= AuthorityRank::Statutory)
+        });
+
+        if !has_statutory_or_higher_evidence {
+            let reason = "subordinate regulatory or administrative citation lacks a verified statutory or constitutional evidence anchor".to_string();
+            rejected_reasons.push(format!("{}: {}", interp.id, reason));
+            evaluated_interpretations.push((interp.id.clone(), false, None, reason));
+            continue;
+        }
+
+        // Compute deterministic DGCS resonance score from derived coordinates [drift, symmetry, stability] using checked arithmetic
         let coords = interp.derived_primitive.coords;
-        let drift = coords[0] * field.state[2];
-        let symmetry = coords[1] * field.state[1];
-        let stability = coords[2] * field.state[0];
-        let score = checked_add(stability, symmetry, "legal interp stab+sym")? - drift;
+        let drift = artificial_qubit_cognition::arithmetic::checked_mul(
+            coords[0],
+            field.state[2],
+            "legal interp drift weighting",
+        )?;
+        let symmetry = artificial_qubit_cognition::arithmetic::checked_mul(
+            coords[1],
+            field.state[1],
+            "legal interp symmetry weighting",
+        )?;
+        let stability = artificial_qubit_cognition::arithmetic::checked_mul(
+            coords[2],
+            field.state[0],
+            "legal interp stability weighting",
+        )?;
+        let stab_plus_sym = checked_add(stability, symmetry, "legal interp stab+sym")?;
+        let score = artificial_qubit_cognition::arithmetic::checked_sub(
+            stab_plus_sym,
+            drift,
+            "legal interp total score",
+        )?;
 
         let tag = if interp.requires_institutional_adjudication {
             "admissible:requires_institutional_adjudication".to_string()
@@ -436,7 +469,7 @@ pub fn evaluate_legal_argument(
             trajectory.set_closure_status(ClosureStatus::Closed);
             let best = admissible_scored
                 .iter()
-                .max_by_key(|(_, s)| *s)
+                .max_by(|(a_i, a_s), (b_i, b_s)| a_s.cmp(b_s).then_with(|| b_i.id.cmp(&a_i.id)))
                 .expect("non-empty admissible list");
             LegalDisposition::RequiresAuthoritativeInterpretation {
                 candidate_interpretation_id: best.0.id.clone(),
@@ -450,14 +483,42 @@ pub fn evaluate_legal_argument(
                 ),
             }
         } else {
-            trajectory.set_closure_status(ClosureStatus::Closed);
-            let best = admissible_scored
+            // Check whether top admissible readings are tied in score -> Unresolved
+            let max_score = admissible_scored
                 .iter()
-                .max_by_key(|(_, s)| *s)
+                .map(|(_, s)| *s)
+                .max()
                 .expect("non-empty admissible list");
-            LegalDisposition::Supported {
-                winning_interpretation_id: best.0.id.clone(),
-                resonance_score: best.1,
+            let tied_top: Vec<&CompetingInterpretation> = admissible_scored
+                .iter()
+                .filter(|(_, s)| *s == max_score)
+                .map(|(i, _)| *i)
+                .collect();
+
+            if tied_top.len() > 1 {
+                trajectory.set_closure_status(ClosureStatus::Closed);
+                LegalDisposition::Unresolved {
+                    admissible_interpretation_ids: tied_top
+                        .iter()
+                        .map(|i| i.id.clone())
+                        .collect(),
+                    open_questions: vec![format!(
+                        "Competing admissible interpretations ({}) are tied at score {}; additional statutory/precedential evidence is required.",
+                        tied_top
+                            .iter()
+                            .map(|i| i.id.as_str())
+                            .collect::<Vec<_>>()
+                            .join(", "),
+                        max_score
+                    )],
+                }
+            } else {
+                trajectory.set_closure_status(ClosureStatus::Closed);
+                let winner = tied_top[0];
+                LegalDisposition::Supported {
+                    winning_interpretation_id: winner.id.clone(),
+                    resonance_score: max_score,
+                }
             }
         }
     };

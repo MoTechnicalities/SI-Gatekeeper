@@ -1,7 +1,8 @@
 use artificial_qubit_cognition::geom::correction_buffer::CorrectionBuffer;
 use si_gatekeeper::{
     canonical_statutory_classification_cases, evaluate_legal_argument,
-    run_compliance_tournament, run_infrastructure_arbitration_demo, run_self_improvement_demo,
+    run_adversarial_verification_suite, run_compliance_tournament,
+    run_infrastructure_arbitration_demo, run_self_improvement_demo,
 };
 
 fn main() {
@@ -64,6 +65,15 @@ fn main() {
         run_self_improvement_demo(&mut si_buffer).expect("self-improvement demo must succeed");
     for r in &si_receipts {
         println!("  - {}", r.signature);
+    }
+    println!();
+
+    println!("[Phase VI] 7-Vector Adversarial Verification Suite (Priorities A, B, & C)");
+    let adv_report = run_adversarial_verification_suite()
+        .expect("adversarial verification suite must succeed");
+    println!("  Suite Signature : {}", adv_report.suite_signature);
+    for v in &adv_report.vectors {
+        println!("  - {} => {}", v.vector_id, v.canonical_proof_tag);
     }
     println!("================================================================================");
 }

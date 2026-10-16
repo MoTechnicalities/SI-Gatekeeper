@@ -9,7 +9,7 @@ authors:
 repository-code: "https://github.com/MoTechnicalities/SI-Gatekeeper"
 url: "https://github.com/MoTechnicalities/SI-Gatekeeper"
 license: "MIT OR Apache-2.0"
-version: 0.1.0
+version: 0.2.0
 date-released: "2026-10-16"
 keywords:
   - deterministic-cognition

@@ -301,7 +301,21 @@ A defensible engineering standard must be explicit about both what it guarantees
      - `ObservableFeatures` should be extracted by deterministic static analysis, formal telemetry counters, or independent domain auditors—never self-asserted by the proposing model.
      - `ExternalFactAttestation` records and `Constitution` manifests should be supplied and cryptographically signed by authorized institutional or sensor authorities outside the generator's control.
 3. **Hand-Authored Demonstration Inputs in This Repository:**
-   - The four standalone binaries (`compliance_tournament`, `infrastructure_arbitration`, `legal_reasoning_trace`, and `self_improvement_gate`) use small, hand-authored candidate sets and feature counts to make the gate mechanics inspectable and self-contained. Extending `SI-Gatekeeper` to production domains requires binding `ObservableFeatures` to real telemetry, AST analyzers, or verified legal/regulatory databases.
+   - The standalone binaries (`compliance_tournament`, `infrastructure_arbitration`, `legal_reasoning_trace`, `self_improvement_gate`, and `adversarial_suite`) use small, hand-authored candidate sets and feature counts to make the gate mechanics inspectable and self-contained. Extending `SI-Gatekeeper` to production domains requires binding `ObservableFeatures` to real telemetry, AST analyzers, or verified legal/regulatory databases.
+
+### Adversarial Verification Suite (`cargo run --bin adversarial_suite`)
+
+To test whether the gatekeeper can be defeated by reward hacking, self-modifying rules, integer overflow, or unanchored legal citations, `src/adversarial.rs` executes seven adversarial attack vectors across three engineering validation priorities:
+
+| Vector | Validation Priority | Attack Scenario Tested | Gatekeeper Defense & Canonical Proof |
+| :--- | :--- | :--- | :--- |
+| **`V1_SelfModifyingConstitution`** | **A. Constitutional Integrity** | Candidate is evaluated under a self-weakened constitution (relaxed drift/fact rules) and submits the receipt to a verifier. | `GateReceipt::verify_constitutional_seal(&locked_constitution)` detects the constitutional signature mismatch; direct evaluation under the locked constitution rejects at `Stage 1 (Invariant)`. |
+| **`V2_ExtremeUtilityInvariantBypass`** | **B. Score vs. Admissibility** | Candidate supplies `500,000` raw stability/symmetry to overpower a missing mandatory invariant (`deterministic_replay`). | Short-circuiting gate rejects at `Stage 1 (Invariant)` before utility is ever computed (`adv:V2\|utility_ignored:true\|verdict:rejected@Invariant`). |
+| **`V3_CoordinateAndScoreOverflowAttack`** | **B. Checked Integer Arithmetic** | Supplies `i32::MAX` and negative deltas to trigger silent two's-complement wraparound during coordinate derivation and field weighting. | Checked integer arithmetic (`checked_sub`, `checked_mul`, `checked_abs`) traps both overflows and returns `Err(ArithmeticError)`. |
+| **`V4_ForgedOrSpoofedAttestation`** | **B. External Attestation Gate** | Supplies a spoofed self-attestation (`self_declared_compliance`) instead of the mandatory `independent_audit_attested` record. | Rejected at `Stage 2 (Validity)` and automatically fails over to `SI_Verified_Baseline` in the `CorrectionBuffer`. |
+| **`V5_ConflictingJurisdictionalVeto`** | **A/B. Multi-Jurisdictional Veto** | Candidate passes a permissive state charter (`drift 6 <= 10`) while violating a stricter federal safety constitution (`drift 6 > 3`). | Multi-jurisdictional intersection gate (`admitted_all = false`) blocks admission whenever any mandatory constitution rejects. |
+| **`V6_TreasReg1_1_1b_EvidenceAndRankChain`** | **C. Legal Evidence & Authority Rank** | Tests a fabricated citation (`EV_FABRICATED_CASE_1924`), an unanchored subordinate regulatory assertion (`26 C.F.R. § 1.1-1(b)` at `AuthorityRank::Regulatory` without a `Statutory` anchor), and a `§ 7701` textual leap. | Rejects the phantom citation, rejects the unanchored subordinate regulation, rejects the textual leap, and admits the anchored statutory+regulatory synthesis under `RequiresAuthoritativeInterpretation`. |
+| **`V7_DeterministicTieProducesUnresolved`** | **B/C. Deterministic Tie Handling** | Two distinct, structurally admissible legal interpretations share identical coordinates `[0, 3, 5]` (`score = 8`). | Emits `LegalDisposition::Unresolved` listing both tied interpretations rather than picking an arbitrary winner. |
 
 ---
 
@@ -324,7 +338,8 @@ SI-Gatekeeper/
 │   └── prototype_compliance.py          # Standalone Python prototype matching Rust bit-for-bit
 └── src/
     ├── lib.rs                           # Public API exports
-    ├── main.rs                          # Full 5-phase verification suite binary
+    ├── main.rs                          # Full 6-phase verification suite binary
+    ├── adversarial.rs                   # 7-vector Adversarial Verification Suite (Priorities A, B, C)
     ├── derivation.rs                    # Observable features -> Z^3 coordinate derivation
     ├── constitution.rs                  # First-class DGCS Constitution & ExternalFactAttestation
     ├── gatekeeper.rs                    # 5-stage short-circuiting Constitutional Gatekeeper
@@ -332,6 +347,7 @@ SI-Gatekeeper/
     ├── jurisdiction.rs                  # Multi-jurisdictional & Multi-domain Infrastructure Arbitration
     ├── legal_reasoning.rs               # 6-layer Constitutional & Statutory Legal Reasoning
     └── bin/
+        ├── adversarial_suite.rs         # Standalone 7-Vector Adversarial Verification CLI
         ├── compliance_tournament.rs     # Standalone Constitutional Compliance CLI
         ├── infrastructure_arbitration.rs# Demo 2: Multi-Domain SI Infrastructure Arbitration CLI
         ├── legal_reasoning_trace.rs     # 6-Layer Legal & Statutory Reasoning Trace CLI
@@ -342,7 +358,7 @@ SI-Gatekeeper/
 
 ## Quick Start
 
-Run the full 5-phase verification suite:
+Run the full 6-phase verification suite:
 
 ```bash
 cargo run --bin si_gatekeeper
@@ -400,6 +416,18 @@ Expected canonical admission receipt for the certified upgrade:
 
 ```text
 gatekeeper:v1|jurisdiction:federal-si-core|candidate:SI_Constitutional_Upgrade|verdict:admitted|score:64|combined:68|stab:40|sym:20|drift:2|coherence:6|creativity:creative|distance:2|minimum:2|invariants:true|structure:true
+```
+
+Run the **7-Vector Adversarial Verification Suite (Priorities A, B, & C)**:
+
+```bash
+cargo run --bin adversarial_suite
+```
+
+Expected canonical adversarial suite signature:
+
+```text
+adversarial:v1|vectors:7|all_verified:true|V1:true|V2:true|V3:true|V4:true|V5:true|V6:true|V7:true
 ```
 
 Run all unit and integration tests:

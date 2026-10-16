@@ -94,8 +94,28 @@ impl GateVerdict {
 pub struct GateReceipt {
     pub candidate_id: String,
     pub jurisdiction_id: String,
+    /// Canonical signature of the exact `Constitution` under which this receipt was issued.
+    /// Any attempt to alter thresholds, invariants, required facts, or resonance weights
+    /// produces a mismatch against this seal.
+    pub constitution_signature: String,
     pub verdict: GateVerdict,
     pub signature: String,
+}
+
+impl GateReceipt {
+    /// Verify that this receipt was evaluated under the exact supplied `Constitution`
+    /// and that no thresholds, invariants, required facts, or resonance weights were
+    /// altered before, during, or after evaluation.
+    pub fn verify_constitutional_seal(&self, expected: &Constitution) -> Result<(), String> {
+        let expected_sig = expected.constitutional_signature();
+        if self.constitution_signature != expected_sig {
+            return Err(format!(
+                "constitutional seal mismatch: receipt sealed under '{}' but verifier expected '{}'",
+                self.constitution_signature, expected_sig
+            ));
+        }
+        Ok(())
+    }
 }
 
 struct ConstitutionalCreativityAdapter<'a> {
@@ -316,6 +336,7 @@ impl<'a> ConstitutionalGatekeeper<'a> {
         Ok(GateReceipt {
             candidate_id: candidate.id.clone(),
             jurisdiction_id: self.constitution.jurisdiction_id.clone(),
+            constitution_signature: self.constitution.constitutional_signature(),
             verdict: GateVerdict::Admitted {
                 resonance_score,
                 combined_selection_score,
@@ -348,6 +369,7 @@ impl<'a> ConstitutionalGatekeeper<'a> {
         GateReceipt {
             candidate_id: candidate.id.clone(),
             jurisdiction_id: self.constitution.jurisdiction_id.clone(),
+            constitution_signature: self.constitution.constitutional_signature(),
             verdict: GateVerdict::Rejected {
                 failed_stage: stage,
                 reason,

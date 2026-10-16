@@ -29,13 +29,14 @@ jobs:
       - name: Run Unit & Constitutional Gate Tests
         run: cargo test --verbose
 
-      - name: Verify Full 5-Phase SI-Gatekeeper Suite
+      - name: Verify Full SI-Gatekeeper Suite & Adversarial Vectors
         run: |
           cargo run --bin si_gatekeeper
           cargo run --bin compliance_tournament
           cargo run --bin infrastructure_arbitration
           cargo run --bin legal_reasoning_trace
           cargo run --bin self_improvement_gate
+          cargo run --bin adversarial_suite
 
       - name: Verify Python Prototype Signature Equivalence
         run: python3 examples/prototype_compliance.py

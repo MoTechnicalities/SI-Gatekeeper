@@ -13,6 +13,7 @@
 //!
 //! $$\boxed{\text{Invariant} \rightarrow \text{Validity} \rightarrow \text{Novelty} \rightarrow \text{Utility} \rightarrow \text{Improvement}}$$
 
+pub mod adversarial;
 pub mod compliance;
 pub mod constitution;
 pub mod derivation;
@@ -20,6 +21,9 @@ pub mod gatekeeper;
 pub mod jurisdiction;
 pub mod legal_reasoning;
 
+pub use adversarial::{
+    run_adversarial_verification_suite, AdversarialSuiteReport, AdversarialVectorResult,
+};
 pub use compliance::{
     canonical_compliance_constitution, canonical_compliance_plans, run_compliance_tournament,
     CompliancePlan, ComplianceTournamentResult,
